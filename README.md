@@ -79,11 +79,11 @@ The tool provides two main functionalities accessible via Python scripts:
     * **How to run:**
         ```bash
         python convert_html_to_jpeg.py \
-            --local_html_file_path "output/document.html" \
-            --jpeg_output_path "output/your_image_name.jpeg"
+            --local_html_path "output/document.html" \
+            --output_jpeg_path "output/your_image_name.jpeg"
         ```
     * **Parameters:**
-        * `--local_html_file_path`: (Required) Path to the local HTML file you want to convert (e.g., the output from the previous step).
-        * `--jpeg_output_path`: (Required) Desired path and filename for the output JPEG image.
+        * `--local_html_path`: (Required) Path to the local HTML file you want to convert (e.g., the output from the previous step).
+        * `--output_jpeg_path`: (Required) Desired path and filename for the output JPEG image.
     * **Output:**
-        The JPEG image will be saved to the specified `jpeg_output_path`.
+        The JPEG image will be saved to the specified `output_jpeg_path`.

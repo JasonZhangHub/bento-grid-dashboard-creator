@@ -1,3 +1,9 @@
+# ignore all files in input/ and output/
+input/*
+output/*
+# except for the directories
+!input/sampleOutput_*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

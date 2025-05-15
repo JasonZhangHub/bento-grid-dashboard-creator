@@ -104,9 +104,9 @@ def main():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
-        "local_html_path", help="Path to the local HTML file (e.g., 'my_document.html').")
+        "--local_html_path", help="Path to the local HTML file (e.g., 'my_document.html').")
     parser.add_argument(
-        "output_jpeg_path", help="Path to save the output JPEG image (e.g., 'output_image.jpg').")
+        "--output_jpeg_path", help="Path to save the output JPEG image (e.g., 'output_image.jpg').")
 
     parser.add_argument("--width", type=int, default=1280,
                         help="Viewport width for initial page rendering.")
