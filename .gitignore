@@ -2,7 +2,8 @@
 input/*
 output/*
 # except for the directories
-!input/sampleOutput_*
+!input/sample_*
+!output/sample_*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

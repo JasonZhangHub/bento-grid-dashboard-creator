@@ -6,7 +6,7 @@ from google.genai import types
 import os
 import re
 from dotenv import load_dotenv, find_dotenv
-from prompts.prompt_v1 import MASTER_PROMPT
+from prompts.prompt_v2 import MASTER_PROMPT
 
 
 def load_environment_variables():
@@ -163,7 +163,7 @@ def main():
 
         # 3. Save the generated HTML
         base_filename = os.path.splitext(os.path.basename(input_file_path))[0]
-        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        timestamp = datetime.datetime.now().strftime("%Y%m%d")
         output_html_filename = f"{base_filename}_{timestamp}.html"
         output_html_path = os.path.join(OUTPUT_FOLDER, output_html_filename)
         user_prompt = '''
