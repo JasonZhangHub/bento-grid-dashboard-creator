@@ -1,235 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Key Insights: Gemini - A Family of Highly Capable Multimodal Models</title>
     <style>
-        /* Basic styling for demonstration - EXPAND SIGNIFICANTLY for a production page */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #eef1f5; color: #333; line-height: 1.6; }
-        header { background: linear-gradient(to right, #0052D4, #65C7F7, #9CECFB); color: white; padding: 2em; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px;}
-        header h1 { margin: 0; font-size: 2.2em; font-weight: 600; }
-        header p { margin: 0.5em 0 0; font-size: 1.1em; opacity: 0.9; }
+      /* Basic styling for demonstration - EXPAND SIGNIFICANTLY for a production page */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        background-color: #eef1f5;
+        color: #333;
+        line-height: 1.6;
+      }
+      header {
+        background: linear-gradient(to right, #0052d4, #65c7f7, #9cecfb);
+        color: white;
+        padding: 2em;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 2.2em;
+        font-weight: 600;
+      }
+      header p {
+        margin: 0.5em 0 0;
+        font-size: 1.1em;
+        opacity: 0.9;
+      }
 
-        .bento-grid-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columns */
-            grid-auto-rows: minmax(150px, auto);
-            gap: 20px;
-            padding: 25px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .bento-box {
-            background-color: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
+      .bento-grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 columns */
+        grid-auto-rows: minmax(150px, auto);
+        gap: 20px;
+        padding: 25px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .bento-box {
+        background-color: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
 
-        /* Spanning classes */
-        .col-span-1 { grid-column: span 1; }
-        .col-span-2 { grid-column: span 2; }
-        .col-span-3 { grid-column: span 3; }
-        .col-span-4 { grid-column: span 4; }
-        .row-span-1 { grid-row: span 1; }
-        .row-span-2 { grid-row: span 2; }
+      /* Spanning classes */
+      .col-span-1 {
+        grid-column: span 1;
+      }
+      .col-span-2 {
+        grid-column: span 2;
+      }
+      .col-span-3 {
+        grid-column: span 3;
+      }
+      .col-span-4 {
+        grid-column: span 4;
+      }
+      .row-span-1 {
+        grid-row: span 1;
+      }
+      .row-span-2 {
+        grid-row: span 2;
+      }
 
-        .bento-box h2 { margin-top: 0; font-size: 1.4em; color: #0052D4; margin-bottom: 15px; font-weight: 600;}
-        .bento-box h3 { font-size: 1.1em; color: #007bff; margin-bottom: 8px; font-weight: 600;}
-        .bento-box p { font-size: 0.9rem; margin-bottom: 10px; }
-        .metric-value { font-size: 2.2em; font-weight: 700; color: #333; display: block; margin-top: 5px; text-align: center; }
-        .metric-label { font-size: 0.9em; color: #6c757d; text-align: center; display:block;}
+      .bento-box h2 {
+        margin-top: 0;
+        font-size: 1.4em;
+        color: #0052d4;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+      .bento-box h3 {
+        font-size: 1.1em;
+        color: #007bff;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+      .bento-box p {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+      .metric-value {
+        font-size: 2.2em;
+        font-weight: 700;
+        color: #333;
+        display: block;
+        margin-top: 5px;
+        text-align: center;
+      }
+      .metric-label {
+        font-size: 0.9em;
+        color: #6c757d;
+        text-align: center;
+        display: block;
+      }
 
-        ul { list-style: none; padding-left: 0; margin-bottom: 0;}
-        ul li { margin-bottom: 0.8em; display: flex; align-items: flex-start; }
-        ul li::before {
-            content: '✓'; /* Checkmark icon */
-            margin-right: 10px;
-            color: #28a745; /* Green color for checkmark */
-            font-weight: bold;
-            font-size: 1.1em;
-            flex-shrink: 0;
-        }
+      ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+      }
+      ul li {
+        margin-bottom: 0.8em;
+        display: flex;
+        align-items: flex-start;
+      }
+      ul li::before {
+        content: "✓"; /* Checkmark icon */
+        margin-right: 10px;
+        color: #28a745; /* Green color for checkmark */
+        font-weight: bold;
+        font-size: 1.1em;
+        flex-shrink: 0;
+      }
 
-        .diagram-placeholder {
-            width: 100%;
-            min-height: 180px;
-            background-color: #f8f9fa;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            color: #495057;
-            font-size: 0.9em;
-            text-align: center;
-            border: 1px solid #e0e7ef;
-            margin-top: auto;
-            padding: 15px;
-        }
-        .diagram-placeholder strong { color: #0052D4; display: block; margin-bottom: 8px; font-size: 1em;}
+      .diagram-placeholder {
+        width: 100%;
+        min-height: 180px;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        color: #495057;
+        font-size: 0.9em;
+        text-align: center;
+        border: 1px solid #e0e7ef;
+        margin-top: auto;
+        padding: 15px;
+        box-sizing: border-box;
+      }
+      .diagram-placeholder strong {
+        color: #0052d4;
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1em;
+      }
 
-        .workflow-steps { display: flex; justify-content: space-around; margin-top: 10px; flex-wrap: wrap; }
-        .workflow-step {
-            flex-basis: calc(20% - 10px); /* Default for 5 steps */
-            min-width: 80px;
-            text-align: center;
-            padding: 8px 4px;
-            border: 1px solid #e0e7ef;
-            border-radius: 8px;
-            background-color: #f9faff;
-            margin: 5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-sizing: border-box;
-        }
-        .workflow-steps.three-items .workflow-step {
-            flex-basis: calc(33.33% - 10px); /* For 3 items */
-            min-width: 120px;
-        }
-        .workflow-step strong {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.75em;
-            color: #0056b3;
-        }
-        .workflow-step p {
-            font-size: 0.68em;
-            margin-bottom: 3px;
-            flex-grow: 1;
-            color: #555;
-        }
-        .workflow-step small {
-            font-size: 0.65em;
-            color: #007bff;
-        }
-        .workflow-step .step-number {
-            background-color: #007bff;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-bottom: 8px;
-            font-size: 0.75em;
-        }
+      .workflow-steps {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+      .workflow-step {
+        flex-basis: calc(20% - 10px); /* Default for 5 steps */
+        min-width: 80px;
+        text-align: center;
+        padding: 8px 4px;
+        border: 1px solid #e0e7ef;
+        border-radius: 8px;
+        background-color: #f9faff;
+        margin: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+      }
+      .workflow-steps.three-items .workflow-step {
+        flex-basis: calc(33.33% - 10px); /* For 3 items */
+        min-width: 120px;
+      }
+      .workflow-step strong {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 0.75em;
+        color: #0056b3;
+      }
+      .workflow-step p {
+        font-size: 0.68em;
+        margin-bottom: 3px;
+        flex-grow: 1;
+        color: #555;
+      }
+      .workflow-step small {
+        font-size: 0.65em;
+        color: #007bff;
+      }
+      .workflow-step .step-number {
+        background-color: #007bff;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 0.75em;
+      }
 
-        .icon-placeholder {
-            font-size: 2em;
-            color: #007bff;
-            margin-bottom: 8px;
-            text-align: center;
-        }
+      .icon-placeholder {
+        font-size: 2em;
+        color: #007bff;
+        margin-bottom: 8px;
+        text-align: center;
+      }
 
-        .value-proposition-section { margin-bottom: 15px; }
-        .value-proposition-section:last-child { margin-bottom: 0; }
+      .value-proposition-section {
+        margin-bottom: 15px;
+      }
+      .value-proposition-section:last-child {
+        margin-bottom: 0;
+      }
 
-        .kpi-box { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align:center; flex-grow: 1;}
-        .kpi-box .icon-placeholder { font-size: 2.5em; margin-bottom: 10px;}
-        .kpi-box p.description { font-size: 0.9rem; margin-bottom:15px; }
-        .kpi-box .metric-value { font-size: 2.8em; color: #007bff; margin-bottom: 0px;}
-        .kpi-box .metric-label { font-size: 0.85em; color: #555; margin-top:0px;}
+      .kpi-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-grow: 1;
+      }
+      .kpi-box .icon-placeholder {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+      .kpi-box p.description {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+      .kpi-box .metric-value {
+        font-size: 2.8em;
+        color: #007bff;
+        margin-bottom: 0px;
+      }
+      .kpi-box .metric-label {
+        font-size: 0.85em;
+        color: #555;
+        margin-top: 0px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Key Insights: Gemini - A Family of Highly Capable Multimodal Models</h1>
-        <p>An overview of Google's new family of multimodal AI models (Ultra, Pro, Nano), their remarkable capabilities across image, audio, video, and text, and their approach to responsible deployment.</p>
+      <h1>Key Insights: Gemini - A Family of Highly Capable Multimodal Models</h1>
+      <p>
+        An overview of Google's new family of multimodal AI models (Ultra, Pro, Nano), their remarkable capabilities
+        across image, audio, video, and text, and their approach to responsible deployment.
+      </p>
     </header>
     <div class="bento-grid-container">
-        <div class="bento-box col-span-2 row-span-1">
-            <h2>Introducing Gemini: A New Era of Multimodal AI</h2>
-            <p>This report introduces Gemini, a new family of highly capable multimodal models developed at Google. Consisting of Ultra, Pro, and Nano sizes, Gemini models exhibit remarkable capabilities across image, audio, video, and text understanding. They are designed for tasks ranging from complex reasoning to on-device applications, aiming to enable a wide variety of use cases through advanced cross-modal reasoning and language understanding.</p>
+      <div class="bento-box col-span-2 row-span-1">
+        <h2>Introducing Gemini: A New Era of Multimodal AI</h2>
+        <p>
+          This report introduces Gemini, a new family of highly capable multimodal models developed at Google.
+          Consisting of Ultra, Pro, and Nano sizes, Gemini models exhibit remarkable capabilities across image, audio,
+          video, and text understanding. They are designed for tasks ranging from complex reasoning to on-device
+          applications, aiming to enable a wide variety of use cases through advanced cross-modal reasoning and language
+          understanding.
+        </p>
+      </div>
+      <div class="bento-box col-span-1 row-span-1 kpi-box">
+        <h2>MMLU Benchmark</h2>
+        <div class="icon-placeholder">🏆</div>
+        <span class="metric-value">90.04%</span>
+        <span class="metric-label">Gemini Ultra - Surpassing Human-Expert Performance</span>
+      </div>
+      <div class="bento-box col-span-1 row-span-1 kpi-box">
+        <h2>Broad State-of-the-Art</h2>
+        <div class="icon-placeholder">📈</div>
+        <span class="metric-value">30 / 32</span>
+        <span class="metric-label">Benchmarks Where Gemini Ultra Achieves SOTA</span>
+      </div>
+      <div class="bento-box col-span-4 row-span-2">
+        <h2>Core Pillars of the Gemini Family</h2>
+        <div class="value-proposition-section">
+          <h3>Natively Multimodal</h3>
+          <p>
+            Gemini models are trained jointly across image, audio, video, and text data, enabling strong generalist
+            capabilities and cutting-edge understanding in each domain. They can process interleaved multimodal inputs
+            and generate text and even image outputs.
+          </p>
         </div>
-        <div class="bento-box col-span-1 row-span-1 kpi-box">
-            <h2>MMLU Benchmark</h2>
-            <div class="icon-placeholder">🏆</div>
-            <span class="metric-value">90.04%</span>
-            <span class="metric-label">Gemini Ultra - Surpassing Human-Expert Performance</span>
+        <div class="value-proposition-section">
+          <h3>Versatile Model Sizes & Variants</h3>
+          <p>
+            The family includes Ultra for highly complex tasks, Pro for scaled performance and deployability, and Nano
+            (1.8B & 3.25B params) for efficient on-device applications. Post-trained variants cater to chat applications
+            (Gemini Apps) and developer needs (Gemini API).
+          </p>
         </div>
-        <div class="bento-box col-span-1 row-span-1 kpi-box">
-             <h2>Broad State-of-the-Art</h2>
-            <div class="icon-placeholder">📈</div>
-            <span class="metric-value">30 / 32</span>
-            <span class="metric-label">Benchmarks Where Gemini Ultra Achieves SOTA</span>
+        <div class="value-proposition-section">
+          <h3>Leading Performance Across Modalities</h3>
+          <p>
+            Gemini Ultra advances the state of the art in 30 of 32 benchmarks, including text, coding, reasoning, image,
+            video, and audio tasks. It's the first to achieve human-expert performance on MMLU and significantly
+            improves over prior models on multimodal benchmarks like MMMU.
+          </p>
         </div>
-        <div class="bento-box col-span-4 row-span-2">
-            <h2>Core Pillars of the Gemini Family</h2>
-            <div class="value-proposition-section">
-                <h3>Natively Multimodal</h3>
-                <p>Gemini models are trained jointly across image, audio, video, and text data, enabling strong generalist capabilities and cutting-edge understanding in each domain. They can process interleaved multimodal inputs and generate text and even image outputs.</p>
-            </div>
-            <div class="value-proposition-section">
-                <h3>Versatile Model Sizes & Variants</h3>
-                <p>The family includes Ultra for highly complex tasks, Pro for scaled performance and deployability, and Nano (1.8B & 3.25B params) for efficient on-device applications. Post-trained variants cater to chat applications (Gemini Apps) and developer needs (Gemini API).</p>
-            </div>
-            <div class="value-proposition-section">
-                <h3>Leading Performance Across Modalities</h3>
-                <p>Gemini Ultra advances the state of the art in 30 of 32 benchmarks, including text, coding, reasoning, image, video, and audio tasks. It's the first to achieve human-expert performance on MMLU and significantly improves over prior models on multimodal benchmarks like MMMU.</p>
-            </div>
-            <div class="value-proposition-section">
-                <h3>Commitment to Responsible AI</h3>
-                <p>Google outlines a structured approach to responsible deployment, including impact assessments, safety policies, data curation, model mitigation through SFT and RLHF, and extensive safety evaluations including red teaming and external reviews.</p>
-            </div>
+        <div class="value-proposition-section">
+          <h3>Commitment to Responsible AI</h3>
+          <p>
+            Google outlines a structured approach to responsible deployment, including impact assessments, safety
+            policies, data curation, model mitigation through SFT and RLHF, and extensive safety evaluations including
+            red teaming and external reviews.
+          </p>
         </div>
-        <div class="bento-box col-span-4 row-span-1">
-            <h2>Gemini 1.0 Model Sizes at a Glance</h2>
-            <div class="workflow-steps three-items">
-                <div class="workflow-step">
-                    <div class="step-number">1</div><strong>Ultra</strong>
-                    <p>Most capable model for highly complex tasks, reasoning, and multimodal tasks.</p>
-                    <small>Efficiently servable at scale on TPUs.</small>
-                </div>
-                <div class="workflow-step">
-                    <div class="step-number">2</div><strong>Pro</strong>
-                    <p>Performance-optimized for cost and latency across a wide range of tasks.</p>
-                    <small>Strong reasoning and broad multimodal capabilities.</small>
-                </div>
-                <div class="workflow-step">
-                    <div class="step-number">3</div><strong>Nano</strong>
-                    <p>Most efficient, designed for on-device deployment (1.8B & 3.25B params).</p>
-                    <small>Trained by distillation, 4-bit quantized.</small>
-                </div>
-            </div>
+      </div>
+      <div class="bento-box col-span-4 row-span-1">
+        <h2>Gemini 1.0 Model Sizes at a Glance</h2>
+        <div class="workflow-steps three-items">
+          <div class="workflow-step">
+            <div class="step-number">1</div>
+            <strong>Ultra</strong>
+            <p>Most capable model for highly complex tasks, reasoning, and multimodal tasks.</p>
+            <small>Efficiently servable at scale on TPUs.</small>
+          </div>
+          <div class="workflow-step">
+            <div class="step-number">2</div>
+            <strong>Pro</strong>
+            <p>Performance-optimized for cost and latency across a wide range of tasks.</p>
+            <small>Strong reasoning and broad multimodal capabilities.</small>
+          </div>
+          <div class="workflow-step">
+            <div class="step-number">3</div>
+            <strong>Nano</strong>
+            <p>Most efficient, designed for on-device deployment (1.8B & 3.25B params).</p>
+            <small>Trained by distillation, 4-bit quantized.</small>
+          </div>
         </div>
-        <div class="bento-box col-span-2 row-span-2">
-            <h2>Key Capabilities & Benchmark Highlights</h2>
-            <ul>
-                <li>Cross-Modal Reasoning: Gemini understands and reasons across interleaved text, image, audio, and video inputs, exemplified by solving physics problems from handwritten notes.</li>
-                <li>Advanced Coding: Gemini Ultra achieves 74.4% on HumanEval. A specialized Gemini Pro powers AlphaCode 2, ranking in the top 15% on Codeforces (1.7x improvement).</li>
-                <li>Superior Image Understanding: Gemini Ultra leads on benchmarks like MMMU (62.4%), TextVQA (82.3%), DocVQA (90.9%), and MathVista (53.0%) often in zero-shot settings.</li>
-                <li>Robust Multilinguality: Strong performance in WMT23 translation (Ultra avg. BLEURT 74.4), MGSM (Ultra 79.0% avg. accuracy), and very low-resource languages.</li>
-                <li>Effective Long Context & Factuality: Supports 32k token context length. Post-training significantly improves factuality, attribution, and hedging capabilities.</li>
-            </ul>
+      </div>
+      <div class="bento-box col-span-2 row-span-2">
+        <h2>Key Capabilities & Benchmark Highlights</h2>
+        <ul>
+          <li>
+            Cross-Modal Reasoning: Gemini understands and reasons across interleaved text, image, audio, and video
+            inputs, exemplified by solving physics problems from handwritten notes.
+          </li>
+          <li>
+            Advanced Coding: Gemini Ultra achieves 74.4% on HumanEval. A specialized Gemini Pro powers AlphaCode 2,
+            ranking in the top 15% on Codeforces (1.7x improvement).
+          </li>
+          <li>
+            Superior Image Understanding: Gemini Ultra leads on benchmarks like MMMU (62.4%), TextVQA (82.3%), DocVQA
+            (90.9%), and MathVista (53.0%) often in zero-shot settings.
+          </li>
+          <li>
+            Robust Multilinguality: Strong performance in WMT23 translation (Ultra avg. BLEURT 74.4), MGSM (Ultra 79.0%
+            avg. accuracy), and very low-resource languages.
+          </li>
+          <li>
+            Effective Long Context & Factuality: Supports 32k token context length. Post-training significantly improves
+            factuality, attribution, and hedging capabilities.
+          </li>
+        </ul>
+      </div>
+      <div class="bento-box col-span-2 row-span-2">
+        <h2>Post-Training for Enhanced Gemini Models</h2>
+        <div class="diagram-placeholder">
+          <strong>Iterative Refinement Pipeline (Figure 7)</strong>
+          <span
+            >1. Prompt Data Collection (Diverse real-world use cases) → <br />2. Supervised Fine-Tuning (SFT on
+            demonstration data) → <br />3. Reward Model (RM) Training (Human feedback data) → <br />4. Reinforcement
+            Learning from Human Feedback (RLHF to align with human preferences).</span
+          >
         </div>
-        <div class="bento-box col-span-2 row-span-2">
-            <h2>Post-Training for Enhanced Gemini Models</h2>
-            <div class="diagram-placeholder">
-                <strong>Iterative Refinement Pipeline (Figure 7)</strong>
-                <span>1. Prompt Data Collection (Diverse real-world use cases) → <br>2. Supervised Fine-Tuning (SFT on demonstration data) → <br>3. Reward Model (RM) Training (Human feedback data) → <br>4. Reinforcement Learning from Human Feedback (RLHF to align with human preferences).</span>
-            </div>
-            <p style="font-size:0.9em; text-align:center; margin-top:10px;">This iterative flywheel of data collection, SFT, RM training, and RLHF is crucial for improving overall quality, enhancing target capabilities (e.g., coding, multilingualism), and ensuring alignment and safety for Gemini Apps and API models.</p>
+        <p style="font-size: 0.9em; text-align: center; margin-top: 10px">
+          This iterative flywheel of data collection, SFT, RM training, and RLHF is crucial for improving overall
+          quality, enhancing target capabilities (e.g., coding, multilingualism), and ensuring alignment and safety for
+          Gemini Apps and API models.
+        </p>
+      </div>
+      <div class="bento-box col-span-4 row-span-1">
+        <h2>Innovations in Large-Scale Training</h2>
+        <p style="text-align: center; font-size: 0.9rem; margin-bottom: 12px">
+          Training the Gemini family required breakthroughs in training algorithms, dataset curation, and
+          infrastructure, leveraging Google's TPUv4 and TPUv5e accelerators.
+        </p>
+        <div class="workflow-steps three-items">
+          <div class="workflow-step">
+            <strong>Unprecedented Scale</strong>
+            <p>
+              Gemini Ultra training used a large fleet of TPUv4s across multiple datacenters, combining SuperPods with
+              advanced networking.
+            </p>
+          </div>
+          <div class="workflow-step">
+            <strong>Enhanced Goodput (97%)</strong>
+            <p>
+              Achieved via redundant in-memory model state copies for rapid recovery from hardware failures, an
+              improvement from 85% for PaLM-2.
+            </p>
+          </div>
+          <div class="workflow-step">
+            <strong>Robust Data Pipeline</strong>
+            <p>
+              Utilizes a multimodal, multilingual dataset from web documents, books, and code. SentencePiece tokenizer
+              trained on a large sample of the corpus improves vocabulary and performance.
+            </p>
+          </div>
         </div>
-        <div class="bento-box col-span-4 row-span-1">
-            <h2>Innovations in Large-Scale Training</h2>
-            <p style="text-align:center; font-size:0.9rem; margin-bottom:12px;">Training the Gemini family required breakthroughs in training algorithms, dataset curation, and infrastructure, leveraging Google's TPUv4 and TPUv5e accelerators.</p>
-            <div class="workflow-steps three-items">
-                <div class="workflow-step"><strong>Unprecedented Scale</strong><p>Gemini Ultra training used a large fleet of TPUv4s across multiple datacenters, combining SuperPods with advanced networking.</p></div>
-                <div class="workflow-step"><strong>Enhanced Goodput (97%)</strong><p>Achieved via redundant in-memory model state copies for rapid recovery from hardware failures, an improvement from 85% for PaLM-2.</p></div>
-                <div class="workflow-step"><strong>Robust Data Pipeline</strong><p>Utilizes a multimodal, multilingual dataset from web documents, books, and code. SentencePiece tokenizer trained on a large sample of the corpus improves vocabulary and performance.</p></div>
-            </div>
-        </div>
+      </div>
     </div>
-    <footer style="text-align:center; padding: 20px; background-color: #0052D4; color:white; margin-top: 20px;">
-        <p>&copy; May 2024 Google DeepMind. Summary of Gemini: A Family of Highly Capable Multimodal Models.</p>
+    <footer style="text-align: center; padding: 20px; background-color: #0052d4; color: white; margin-top: 20px">
+      <p>&copy; May 2024 Google DeepMind. Summary of Gemini: A Family of Highly Capable Multimodal Models.</p>
     </footer>
-</body>
+  </body>
 </html>

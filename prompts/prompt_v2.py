@@ -76,6 +76,7 @@ Your primary goal is to meticulously use this extracted text and intelligently s
             border: 1px solid #e0e7ef;
             margin-top: auto;
             padding: 15px;
+            box-sizing: border-box;
         }
         .diagram-placeholder strong { color: #0052D4; /* ADAPT COLOR TO DOCUMENT THEME/BRANDING if applicable */ display: block; margin-bottom: 8px; font-size: 1em;}
 
@@ -321,6 +322,7 @@ Reference HTML Structure (Use this as a template for style and layout):
                 border: 1px solid #e0e7ef;
                 margin-top: auto;
                 padding: 15px;
+                box-sizing: border-box;
             }
             .diagram-placeholder strong { color: #0052D4; /* ADAPT COLOR TO NEW BRANDING */ display: block; margin-bottom: 8px; font-size: 1em;}
     .workflow-steps { display: flex; justify-content: space-around; margin-top: 10px; flex-wrap: wrap; }
