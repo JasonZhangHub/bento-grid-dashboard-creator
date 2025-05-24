@@ -1,3 +1,4 @@
+# PROMPT V3: For generating a flexible, modular bento-grid HTML summary for any document type (e.g., reports, articles, business plans), with adaptive layout and content based on the document's structure.
 MASTER_PROMPT = """
 You are an AI assistant tasked with creating an HTML page to present a structured summary and key insights from any document. The page must feature a visually appealing, modular bento-grid style, suitable for a wide range of document types (e.g., reports, articles, research, business plans, etc.).
 

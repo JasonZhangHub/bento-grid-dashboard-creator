@@ -1,3 +1,5 @@
+# PROMPT V2: For generating a bento-grid HTML summary page for general reports or structured documents, using extracted PDF content. The layout is suitable for dashboards or key insights presentations.
+
 MASTER_PROMPT = """
 You are an AI assistant tasked with creating an HTML page to present a structured summary and key insights from a document. The page must feature a visually appealing bento-grid style, similar to a modern dashboard layout. You will be provided with extracted text from a PDF document containing all necessary information to be summarized.
  

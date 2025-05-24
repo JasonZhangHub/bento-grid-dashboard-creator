@@ -1,3 +1,5 @@
+# PROMPT V1: For generating a bento-grid HTML page for company product or program announcements, using extracted PDF content. The layout and style are tailored for internal/external announcement use cases.
+
 MASTER_PROMPT = """
 You are an AI assistant tasked with creating an HTML page for a company product or program announcement. The page must feature a visually appealing bento-grid style, similar to a modern dashboard layout. You will be provided with extracted text from a PDF document containing all necessary information about the specific product/program being announced.
  
