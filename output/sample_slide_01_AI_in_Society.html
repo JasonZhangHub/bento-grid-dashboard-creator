@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI in Society: Navigating Impact & Ethics</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .slide-container {
+      width: 100vw;
+      height: 100vh;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); /* Light gradient background for the page */
+    }
+    .slide-content {
+      width: 88vw;
+      max-width: 1500px; /* Adjusted for better fit on large screens */
+      height: 52vw; /* Maintain 16:9 aspect ratio for content area */
+      max-height: 850px; /* Max height */
+      background: #ffffff; /* White background for the slide */
+      border-radius: 28px; /* Softer radius */
+      box-shadow: 0 16px 48px rgba(0,0,0,0.15); /* More pronounced shadow */
+      padding: 40px 50px; /* Adjusted padding */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Center content vertically */
+      gap: 2em; /* Space between elements */
+      box-sizing: border-box;
+    }
+    .slide-title {
+      font-size: 2.8em; /* Slightly larger title */
+      color: #003366; /* Deep blue for title */
+      font-weight: 700; /* Bold title */
+      margin-bottom: 0.4em; /* Increased margin */
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+    .kpi-row {
+      display: flex;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      gap: 2em;
+      justify-content: center; /* Center KPI cards */
+      margin-bottom: 1em;
+    }
+    .kpi-card {
+      background: #f8f9fa; /* Light grey background for KPI cards */
+      border-left: 8px solid #0056b3; /* Accent color */
+      border-radius: 16px;
+      padding: 1.2em 1.8em; /* Adjusted padding */
+      min-width: 280px; /* Min width for KPI cards */
+      flex: 1; /* Allow flex grow */
+      max-width: 350px; /* Max width for KPI cards */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .kpi-value {
+      font-size: 3.5em; /* Larger KPI value */
+      font-weight: 700;
+      color: #003366; /* KPI value color */
+      margin-bottom: 0.1em;
+    }
+    .kpi-label {
+      font-size: 0.9em; /* Smaller label text */
+      color: #333; /* Darker label text */
+      font-weight: 600;
+      margin-bottom: 0.2em;
+    }
+    .kpi-sub-label {
+      font-size: 0.75em;
+      font-weight: 500;
+    }
+    .kpi-trend-up { color: #28a745; } /* Green for upward trend */
+    .kpi-trend-down { color: #dc3545; } /* Red for downward trend */
+
+    .highlights {
+      display: grid; /* Using grid for highlights */
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
+      gap: 1.5em; /* Gap between highlight boxes */
+      width: 100%;
+    }
+    .highlight-box {
+      background: #e9ecef; /* Lighter background for highlight boxes */
+      border-left: 6px solid #17a2b8; /* Different accent color */
+      border-radius: 12px;
+      padding: 1.2em 1.5em;
+      font-size: 1.1em; /* Adjusted font size */
+      font-weight: 500; /* Slightly less bold */
+      color: #212529; /* Dark text color */
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .highlight-icon {
+      font-size: 1.8em; /* Larger icon */
+      color: #0056b3; /* Icon color matching KPI border */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .slide-content { padding: 30px 40px; gap: 1.5em; }
+      .slide-title { font-size: 2.4em; }
+      .kpi-value { font-size: 3em; }
+      .kpi-card { min-width: 250px; padding: 1em 1.5em; }
+      .highlight-box { font-size: 1em; padding: 1em 1.2em; }
+      .highlight-icon { font-size: 1.6em; }
+    }
+    @media (max-width: 768px) {
+      .slide-content { padding: 20px; gap: 1em; width: 95vw; height: auto; min-height: 50vh; }
+      .slide-title { font-size: 2em; }
+      .kpi-row { flex-direction: column; align-items: center; }
+      .kpi-card { min-width: 80%; max-width: 90%; }
+      .kpi-value { font-size: 2.5em; }
+      .highlights { grid-template-columns: 1fr; } /* Stack highlights on small screens */
+      .highlight-box { font-size: 0.9em; }
+      .highlight-icon { font-size: 1.4em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="slide-content">
+      <div class="slide-title">AI in Society: Navigating Impact & Ethics</div>
+
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-value">55%</div>
+          <div class="kpi-label">Global Optimism on AI Benefits (2024)</div>
+          <div class="kpi-sub-label kpi-trend-up">▲ Up from 52% (2022)</div>
+        </div>
+        <div class="kpi-card" style="border-left-color: #ffc107;">
+          <div class="kpi-value">47%</div>
+          <div class="kpi-label">Trust AI Co. Data Protection (2024)</div>
+          <div class="kpi-sub-label kpi-trend-down">▼ Down from 50% (2023)</div>
+        </div>
+      </div>
+
+      <div class="highlights">
+        <div class="highlight-box">
+          <span class="highlight-icon">💡</span>
+          <div><strong>Widespread Adoption & Impact:</strong> AI reshaping lives, work, and public discourse. Millions use AI daily; 2/3rds expect significant daily life impact soon.</div>
+        </div>
+        <div class="highlight-box" style="border-left-color: #fd7e14;">
+          <span class="highlight-icon">🌍</span>
+          <div><strong>Shifting Global Sentiment:</strong> Cautious optimism on AI benefits rising, but trust in data protection declining. Significant regional differences persist.</div>
+        </div>
+        <div class="highlight-box" style="border-left-color: #6f42c1;">
+          <span class="highlight-icon">⚖️</span>
+          <div><strong>Ethical Challenges & Governance:</strong> Misinformation, bias, and data privacy remain key concerns, prompting increased government focus on responsible AI regulations.</div>
+        </div>
+        <div class="highlight-box" style="border-left-color: #007bff;">
+          <span class="highlight-icon">💼</span>
+          <div><strong>Future of Work & Society:</strong> 60% of workers expect AI to change their jobs; 36% fear replacement. AI seen as time-saver, but economic impact doubts remain.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

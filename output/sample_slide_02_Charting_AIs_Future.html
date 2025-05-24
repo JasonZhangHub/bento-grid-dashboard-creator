@@ -1,0 +1,174 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charting AI's Future: Governance & Global Action</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .slide-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); /* Softer gradient background */
+    }
+    .slide-content {
+      width: 90vw; /* Adjusted for better fit */
+      max-width: 1422px; /* 16:9 aspect ratio at common height like 800px -> 1422px width */
+      height: 50.625vw; /* Height based on 16:9 aspect ratio relative to width */
+      max-height: 800px; /* Max height */
+      background: #ffffff;
+      border-radius: 24px; /* Slightly reduced */
+      box-shadow: 0 12px 48px rgba(0,0,0,0.15); /* Enhanced shadow */
+      padding: 40px 50px; /* Adjusted padding */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Center content vertically */
+      gap: 2em; /* Adjusted gap */
+      box-sizing: border-box;
+    }
+    .slide-title {
+      font-size: 2.8em; /* Slightly increased */
+      color: #0d47a1; /* Darker blue for title */
+      font-weight: 700; /* Bold */
+      margin-bottom: 0.4em; /* Increased margin */
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+    .kpi-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      justify-content: center; /* Center KPI cards */
+      align-items: stretch; /* Make cards same height if they wrap */
+      margin-bottom: 1em;
+    }
+    .kpi-card {
+      background: #e3f2fd; /* Light blue background */
+      border-left: 7px solid #1976d2; /* Blue accent border */
+      border-radius: 12px; /* Softer radius */
+      padding: 1.2em 1.8em; /* Adjusted padding */
+      flex: 1 1 280px; /* Flex properties for responsiveness */
+      min-width: 250px; /* Minimum width */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; /* Center content within card */
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    }
+    .kpi-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    }
+    .kpi-value {
+      font-size: 3em; /* Large metric value */
+      font-weight: 700;
+      color: #1565c0; /* Darker blue for value */
+      margin-bottom: 0.1em;
+    }
+    .kpi-label {
+      font-size: 0.8em; /* Relative to kpi-card's base font, which is not set directly */
+      color: #0d47a1; /* Dark blue for label */
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .kpi-sub-label {
+      font-size: 0.65em; /* Smaller sub-label */
+      color: #42a5f5; /* Lighter blue for sub-label */
+      margin-top: 0.3em;
+    }
+    .highlights {
+      display: grid; /* Using grid for highlights */
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
+      gap: 1.8em; /* Gap between highlight boxes */
+      width: 100%;
+    }
+    .highlight-box {
+      background: #f1f8e9; /* Light green background */
+      border-left: 7px solid #388e3c; /* Green accent border */
+      border-radius: 12px;
+      padding: 1.2em 1.5em;
+      font-size: 1.15em; /* Adjusted font size */
+      font-weight: 500; /* Medium weight */
+      color: #1b5e20; /* Dark green text */
+      display: flex;
+      align-items: center;
+      gap: 0.8em; /* Gap between icon and text */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    }
+    .highlight-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    }
+    .highlight-icon {
+      font-size: 1.8em; /* Larger icon */
+      color: #4caf50; /* Green icon color */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .slide-content { padding: 30px 40px; gap: 1.5em; }
+      .slide-title { font-size: 2.4em; }
+      .kpi-value { font-size: 2.5em; }
+      .kpi-label { font-size: 0.75em; }
+      .kpi-sub-label { font-size: 0.6em; }
+      .highlight-box { font-size: 1.05em; }
+    }
+    @media (max-width: 768px) {
+      .slide-content { padding: 20px; gap: 1em; }
+      .slide-title { font-size: 2em; margin-bottom: 0.2em; }
+      .kpi-row { flex-direction: column; gap: 1em; }
+      .kpi-card { min-width: unset; width: 100%; padding: 1em; }
+      .kpi-value { font-size: 2.2em; }
+      .kpi-label { font-size: 0.7em; }
+      .kpi-sub-label { font-size: 0.55em; }
+      .highlights { grid-template-columns: 1fr; gap: 1em; } /* Stack highlights on small screens */
+      .highlight-box { font-size: 1em; padding: 1em; }
+      .highlight-icon { font-size: 1.5em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="slide-content">
+      <div class="slide-title">Charting AI's Future: Governance & Global Action</div>
+      
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-value">59</div>
+          <div class="kpi-label">U.S. Federal AI Regulations (2024)</div>
+          <div class="kpi-sub-label">&gt;2x Increase from 25 in 2023</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">+21.3%</div>
+          <div class="kpi-label">Global AI Legislative Mentions (2024)</div>
+          <div class="kpi-sub-label">Over 9x Increase Since 2016</div>
+        </div>
+      </div>
+      
+      <div class="highlights">
+        <div class="highlight-box">
+          <span class="highlight-icon">🛡️</span>
+          <div><strong>AI Safety Institutes Expand:</strong> Growing international coordination on AI safety initiatives.</div>
+        </div>
+        <div class="highlight-box">
+          <span class="highlight-icon">💰</span>
+          <div><strong>Major AI Infrastructure Investments:</strong> Nations commit billions (e.g., Saudi Arabia $100B, France €109B).</div>
+        </div>
+        <div class="highlight-box">
+          <span class="highlight-icon">🏛️</span>
+          <div><strong>States Lead on AI Laws:</strong> U.S. states pass 131 new AI-related laws in the past year alone.</div>
+        </div>
+        <div class="highlight-box">
+          <span class="highlight-icon">📜</span>
+          <div><strong>Deepfake Regulations Surge:</strong> 24 U.S. states now have laws specifically targeting deepfakes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

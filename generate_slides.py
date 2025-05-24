@@ -49,10 +49,24 @@ def extract_sections_from_response(response_text):
         sections.append({"title": title, "summary": summary})
     return sections
 
+def sanitize_filename(title: str) -> str:
+    # Remove problematic characters and excessive length
+    sanitized = re.sub(r'[^\w\- ]', '', title)  # Keep alphanumeric, dash, underscore, space
+    sanitized = sanitized.replace(' ', '_')
+    sanitized = sanitized.strip('_')
+    return sanitized[:60]  # Limit length
+
 def extract_html_from_response(response_text):
+    # Try to extract from ```html ... ```
     match = re.search(r"```html(.*?)```", response_text, re.DOTALL | re.IGNORECASE)
     if match:
         return match.group(1).strip()
+    # Fallback: try to extract first <html>...</html> block
+    match = re.search(r"<html[\s\S]*?</html>", response_text, re.IGNORECASE)
+    if match:
+        return match.group(0).strip()
+    # Log the first 500 chars for debugging
+    print("[WARN] Could not extract HTML. Raw response (truncated):", response_text[:500])
     return None
 
 def save_text_to_file(text_content: str, output_file_path: str):
@@ -71,7 +85,7 @@ def main():
     if not input_file_path.lower().endswith('.pdf'):
         print(f"Error: File '{input_file_path}' is not a PDF.")
         return
-    OUTPUT_FOLDER = 'output_slides'
+    OUTPUT_FOLDER = 'output'
     os.makedirs(OUTPUT_FOLDER, exist_ok=True)
     gemini_api_key, gemini_model_id = load_environment_variables()
     client = initialize_gemini_client(api_key=gemini_api_key)
@@ -93,8 +107,9 @@ def main():
     print(f"Found {len(sections)} sections. Generating slides...")
     # Step 2: Generate a slide for each section
     for idx, section in enumerate(sections, 1):
+        # The slide prompt now encourages flexible layouts and KPI highlighting (see prompt_v4.py)
         slide_prompt = f"""
-        Create a 16:9 HTML presentation slide for the following section.\nSection Title: {section['title']}\nSection Summary: {section['summary']}\nGenerate 3-6 key bullet points for this section based on the document.\n"""
+        Create a 16:9 HTML presentation slide for the following section.\nSection Title: {section['title']}\nSection Summary: {section['summary']}\nGenerate 3-6 key bullet points for this section based on the document.\nIf there are any key metrics, numbers, or comparisons, highlight them in a visually engaging KPI chart or card as described in the prompt. Use a flexible layout that best fits the content.\n"""
         slide_response = generate_content(
             client=client,
             model_id=gemini_model_id,
@@ -106,8 +121,10 @@ def main():
         html_slide = extract_html_from_response(slide_response)
         if not html_slide:
             print(f"Failed to generate slide for section: {section['title']}")
+            print(f"[DEBUG] Model response (truncated): {slide_response[:500] if slide_response else 'None'}")
             continue
-        slide_filename = f"slide_{idx:02d}_{section['title'].replace(' ', '_')}.html"
+        safe_title = sanitize_filename(section['title'])
+        slide_filename = f"slide_{idx:02d}_{safe_title}.html"
         output_path = os.path.join(OUTPUT_FOLDER, slide_filename)
         save_text_to_file(html_slide, output_path)
         print(f"Saved slide: {output_path}")
